@@ -1,7 +1,7 @@
 # Solana on-chain multiplayer card game command line interface
 
-### This game runs on the devnet and serves as a simulator
-#### Back end: https://github.com/francisy9/hs-card-game
+#### This game runs on the devnet and serves as a simulator
+##### Back end: https://github.com/francisy9/hs-card-game
 
 To run:
 
@@ -20,8 +20,8 @@ To run:
 Feel free to play around by changing the sample hands (near the top of `index.js`)
 
 
-### How to Play
-#### Overview
+## How to Play
+### Overview
 One-versus-one game where you must take the health of opposing hero down from 30 to 0 to win
 
 Attacking them directly with units on the board will reduce their health
@@ -30,7 +30,7 @@ Each player takes a turn to play any cards they wish and then attack the opposin
 
 Each card cost mana to play and your mana increases by 1 each turn up to 10
 
-#### Commands
+### Commands
 All command examples will be be assumed to be player one's turn
 
 
