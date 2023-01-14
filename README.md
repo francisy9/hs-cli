@@ -56,6 +56,10 @@ You can only play cards onto your empty board spaces, i.e. player one can only p
 
 Note: Units can only attack after they are played but they also need a turn to get ready (check `moves` attribute of unit)
 
+Units attacking each other will result in both taking damage equivalent to the other's attack
+
+Once a unit's hp goes to 0, they get removed from the board.
+
 
 #### End Turn:
 
