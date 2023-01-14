@@ -15,5 +15,6 @@ To run:
 
 `node index.js`
 
+(`npm i` and `node createKeypair.js` only needs to be run when you first clone this repo)
 
 Feel free to play around by changing the sample hands (near the top of `index.js`)
