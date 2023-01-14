@@ -43,7 +43,7 @@ All command examples will be be assumed to be player one's turn
 
 Note: Playing cards expend mana, so you can only play cards your remaining mana allows (see show hand command)
 
-You can only play cards onto your empty board spaces, i.e. player one cannot play units onto the top row.
+You can only play cards onto your empty board spaces, i.e. player one can only play cards onto empty spaces in the bottom row; player two can only do so in the empty spaces in the top row
 
 
 #### Attack:
