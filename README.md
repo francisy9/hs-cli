@@ -1,6 +1,6 @@
 # Solana on-chain multiplayer card game command line interface
 
-#### This game runs on the devnet and serves as a simulator
+#### This game runs on the devnet and is supposed to be a two player card game, but this cli will simulate how the two players will interact with the game accout from the same interface. In reality, it will be implemented such that the two players can play from their own device. (Read more on the back end page)
 ##### Back end: https://github.com/francisy9/hs-card-game
 
 To run:
