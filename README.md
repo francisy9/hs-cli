@@ -5,7 +5,7 @@
 
 To run:
 
-`git clone https://github.com/francisy9/hs-card-game.git`
+`git clone https://github.com/francisy9/hs-cli.git`
 
 (Navigate to this folder on your command line)
 
