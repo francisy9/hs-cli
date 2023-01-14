@@ -7,7 +7,7 @@ To run:
 
 `git clone https://github.com/francisy9/hs-card-game.git`
 
-(Navigate to this file on your command line)
+(Navigate to this folder on your command line)
 
 `node createKeypair.js`
 
