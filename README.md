@@ -9,6 +9,8 @@ To run:
 
 (Navigate to this folder on your command line)
 
+`npm i`
+
 `node createKeypair.js`
 
 `node index.js`
