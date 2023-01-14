@@ -4,6 +4,24 @@ import p1kp from "./player1kp.json" assert { type: "json" };
 import p2kp from "./player2kp.json" assert { type: "json" };
 import { Connection, PublicKey, clusterApiUrl, Keypair } from "@solana/web3.js";
 
+let sampleHand = [
+  { hp: 2, atk: 1, mana: 1, moves: 0 },
+  { hp: 2, atk: 3, mana: 2, moves: 0 },
+  { hp: 5, atk: 5, mana: 5, moves: 0 },
+  { hp: 2, atk: 2, mana: 2, moves: 0 },
+  { hp: 6, atk: 5, mana: 6, moves: 0 },
+  { hp: 8, atk: 8, mana: 8, moves: 0 }
+];
+
+let sampleHand2 = [
+  { hp: 15, atk: 7, mana: 1, moves: 0 },
+  { hp: 5, atk: 5, mana: 2, moves: 0 },
+  { hp: 5, atk: 4, mana: 4, moves: 0 },
+  { hp: 7, atk: 9, mana: 8, moves: 0 },
+  { hp: 10, atk: 10, mana: 10, moves: 0 },
+  { hp: 5, atk: 8, mana: 7, moves: 0 }
+];
+
 const programId = new PublicKey(idl.metadata.address);
 const network = clusterApiUrl("devnet");
 const opts = {
@@ -44,23 +62,6 @@ const getProvider = () => {
 
 const program = new anchor.Program(idl, programId, getProvider());
 
-let sampleHand = [
-  { hp: 2, atk: 1, mana: 1, moves: 0 },
-  { hp: 2, atk: 3, mana: 2, moves: 0 },
-  { hp: 5, atk: 5, mana: 5, moves: 0 },
-  { hp: 2, atk: 2, mana: 2, moves: 0 },
-  { hp: 6, atk: 5, mana: 6, moves: 0 },
-  { hp: 8, atk: 8, mana: 8, moves: 0 }
-];
-
-let sampleHand2 = [
-  { hp: 15, atk: 7, mana: 1, moves: 0 },
-  { hp: 5, atk: 5, mana: 2, moves: 0 },
-  { hp: 5, atk: 4, mana: 4, moves: 0 },
-  { hp: 7, atk: 9, mana: 8, moves: 0 },
-  { hp: 10, atk: 10, mana: 10, moves: 0 },
-  { hp: 5, atk: 8, mana: 7, moves: 0 }
-];
 
 const getLeaderBoardObj = async () => {
   try {
