@@ -35,26 +35,34 @@ All command examples will be be assumed to be player one's turn
 
 
 
-Play Card: p (card index) (row position)
+Play Card: `p (card index) (row position)`
 
-(`p 0 4` will play player one's index 0 card onto the bottom row's index four position.)
+`p 0 4` will play player one's index 0 card onto the bottom row's index four position
 
+Note: Playing cards expend mana, so you can only play cards your remaining mana allows (see show hand command)
 
-Attack: a (ally row position) (enemy row position) [To attack enemy hero use index 7]
-
-(`a 3 6` will use the bottom row's index 3 card to attack top row's index 6 unit, remember to check the remaining moves of the unit)
-
-
-End Turn: e
-
-(`e` will end player one's turn and allow player two to take their turn)
+You can only play cards onto your empty board spaces, i.e. player one cannot play units onto the top row.
 
 
-Print Board: pb
+Attack: `a (ally row position) (enemy row position)` [To attack enemy hero use index 7]
 
-(`pb` will display the current board state alongside player health and mana)
+`a 3 6` will use the bottom row's index 3 card to attack top row's index 6 unit
+
+`a 0 7` will use bottom row's index 0 unit to attack enemy hero
+
+Note: Units can only attack after they are played but they also need a turn to get ready (check `moves` attribute of unit)
 
 
-Show Hand: s
+End Turn: `e`
 
-(`s` will show player one's remaining mana and cards in hand)
+`e` will end player one's turn and allow player two to take their turn
+
+
+Print Board: `pb`
+
+`pb` will display the current board state alongside player health and mana
+
+
+Show Hand: `s`
+
+`s` will show player one's remaining mana and cards in hand
