@@ -50,7 +50,7 @@ You can only play cards onto your empty board spaces, i.e. player one can only p
 
 `a (ally row position) (enemy row position)` [To attack enemy hero use index 7]
 
-`a 3 6` will use the bottom row's index 3 card to attack top row's index 6 unit
+`a 3 6` will use the bottom row's index 3 unit (card played onto the board) to attack top row's index 6 unit
 
 `a 0 7` will use bottom row's index 0 unit to attack enemy hero
 
