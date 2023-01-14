@@ -1,0 +1,530 @@
+{
+  "version": "0.1.0",
+  "name": "card",
+  "instructions": [
+    {
+      "name": "setupGame",
+      "accounts": [
+        {
+          "name": "game",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "p1",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "p1Stats",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "p2",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "p2Stats",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "leaderboard",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "p1Hand",
+          "type": {
+            "vec": {
+              "defined": "Card"
+            }
+          }
+        },
+        {
+          "name": "p2Hand",
+          "type": {
+            "vec": {
+              "defined": "Card"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "playCard",
+      "accounts": [
+        {
+          "name": "game",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "player",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "pos",
+          "type": "u8"
+        },
+        {
+          "name": "cardIndex",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "endTurn",
+      "accounts": [
+        {
+          "name": "game",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "player",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "attack",
+      "accounts": [
+        {
+          "name": "game",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "player",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "allyPos",
+          "type": "u8"
+        },
+        {
+          "name": "enemyPos",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "initLeaderboard",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "leaderboard",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "bump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "createUserStats",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userStats",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "leaderboard",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "setScores",
+      "accounts": [
+        {
+          "name": "p1",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "p1Stats",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "p2",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "p2Stats",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "game",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "concede",
+      "accounts": [
+        {
+          "name": "game",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "p1",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "p1Stats",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "p2",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "p2Stats",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Game",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "players",
+            "type": {
+              "array": [
+                "publicKey",
+                2
+              ]
+            }
+          },
+          {
+            "name": "turn",
+            "type": "u8"
+          },
+          {
+            "name": "board",
+            "type": {
+              "array": [
+                {
+                  "array": [
+                    {
+                      "option": {
+                        "defined": "Card"
+                      }
+                    },
+                    7
+                  ]
+                },
+                2
+              ]
+            }
+          },
+          {
+            "name": "state",
+            "type": {
+              "defined": "GameState"
+            }
+          },
+          {
+            "name": "health",
+            "type": {
+              "array": [
+                "i8",
+                2
+              ]
+            }
+          },
+          {
+            "name": "mana",
+            "type": {
+              "array": [
+                "i8",
+                2
+              ]
+            }
+          },
+          {
+            "name": "p1Hand",
+            "type": {
+              "vec": {
+                "defined": "Card"
+              }
+            }
+          },
+          {
+            "name": "p2Hand",
+            "type": {
+              "vec": {
+                "defined": "Card"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Leaderboard",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "players",
+            "type": {
+              "vec": "publicKey"
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserStats",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "score",
+            "type": "u16"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "activeGame",
+            "type": {
+              "option": "publicKey"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "Card",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "hp",
+            "type": "i8"
+          },
+          {
+            "name": "atk",
+            "type": "i8"
+          },
+          {
+            "name": "mana",
+            "type": "i8"
+          },
+          {
+            "name": "moves",
+            "type": "i8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "GameState",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Active"
+          },
+          {
+            "name": "Tie"
+          },
+          {
+            "name": "Won",
+            "fields": [
+              {
+                "name": "winner",
+                "type": "publicKey"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "TileOutOfBounds"
+    },
+    {
+      "code": 6001,
+      "name": "PositionOutOfBounds"
+    },
+    {
+      "code": 6002,
+      "name": "EmptyBoardSpace"
+    },
+    {
+      "code": 6003,
+      "name": "TileAlreadySet"
+    },
+    {
+      "code": 6004,
+      "name": "GameAlreadyOver"
+    },
+    {
+      "code": 6005,
+      "name": "NotPlayersTurn"
+    },
+    {
+      "code": 6006,
+      "name": "GameAlreadyStarted"
+    },
+    {
+      "code": 6007,
+      "name": "EnemyBoardPositionEmpty"
+    },
+    {
+      "code": 6008,
+      "name": "AllyBoardPositionEmpty"
+    },
+    {
+      "code": 6009,
+      "name": "CannotAttackOwnHero"
+    },
+    {
+      "code": 6010,
+      "name": "UnitIsNotReady"
+    },
+    {
+      "code": 6011,
+      "name": "InsufficientMana"
+    },
+    {
+      "code": 6012,
+      "name": "ScoreTooLow"
+    },
+    {
+      "code": 6013,
+      "name": "ScoreTooHigh"
+    },
+    {
+      "code": 6014,
+      "name": "UserAlreadyExists"
+    },
+    {
+      "code": 6015,
+      "name": "UserStatsAccountMissing"
+    },
+    {
+      "code": 6016,
+      "name": "OpposingStatsAccountMissing"
+    },
+    {
+      "code": 6017,
+      "name": "YouHaveAnActiveGame"
+    },
+    {
+      "code": 6018,
+      "name": "OpponentHasAnActiveGame"
+    },
+    {
+      "code": 6019,
+      "name": "NameTooLong"
+    },
+    {
+      "code": 6020,
+      "name": "GameStillActive"
+    },
+    {
+      "code": 6021,
+      "name": "MismatchPlayerKeys"
+    },
+    {
+      "code": 6022,
+      "name": "CardIndexOutOfBounds"
+    }
+  ],
+  "metadata": {
+    "address": "ACYSdixSJLAewjEtKG17p4FsHVoEj1ptpB1UNv7vh4EJ"
+  }
+}

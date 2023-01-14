@@ -1,0 +1,16 @@
+{
+  "name": "card_cli",
+  "version": "1.0.0",
+  "description": "Command line game for on-chain solana card game",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.26.0",
+    "@solana/web3.js": "^1.73.0"
+  }
+}
